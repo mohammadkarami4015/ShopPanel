@@ -1,0 +1,130 @@
+
+.imgEdTree {
+    height: 50px;
+    width: 50px;
+    border-radius: 37px;
+    box-shadow: 0px 1px 4px 0px grey;
+}
+
+.btn-accepted {
+    height: 50px;
+    border-radius: 37px;
+    box-shadow: 0px 1px 4px 0px grey;
+    background-color: #17b718;
+    color: white;
+    padding: 4px 15px;
+    pointer-events: none
+}
+
+.height-70 {
+    height: 70px;
+}
+
+.btn-not-accepted {
+    height: 50px;
+    border-radius: 37px;
+    box-shadow: 0px 1px 4px 0px grey;
+    background-color: #eee;
+    color: #676a6c;
+    padding: 4px 15px;
+    pointer-events: none;
+}
+
+.adminProfile {
+    height:100px;
+    width:100px;
+    background-size:cover;
+    border-radius: 100px;
+    background-position: center;
+}
+.plusIcon {
+    width: 40px;
+    position: absolute;
+    bottom: -8px;
+    right: 28px;
+}
+.successPayment{
+    background-color: #24c10099;
+}
+.failedPayment{
+    background-color: #ff000099;
+}
+.disNone {
+    display: none;
+}
+.adminProfileDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.dividerDiv {
+    border-top: 1px solid lightgray;
+    margin: 30px 30px;
+}
+
+.preCustom {
+    background-color: #f4f4f400;
+    border: 0 solid;
+    border-radius: 0;
+}
+.pagination {
+direction: ltr !important;
+}
+#map {
+width: 50vw;
+height: 50vh;
+}
+.editProfileDiv {
+display: flex !important;
+justify-content: center;
+align-items: center;
+}
+
+.logOutForm {
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0 0px 6px 0px;
+width: 100%;
+}
+.logoutBtn {
+width: 70%;
+}
+.searchForm {
+min-width: 265px;
+}
+.searchInput {
+border: solid 1px #1ab394;
+height: 33px;margin-top: 12px;
+border-radius: 3px;
+text-align: center;
+}
+.searchBtn {
+margin-top: 12px;
+height: 31px;
+}
+.searchItemDiv {
+display: flex;
+justify-content: space-between;
+}
+.floatRight {
+float: right;
+}
+.searchListBtn {
+margin-right: 5px;
+height: 33px;
+margin-top: 10px;
+margin-left: 5px;
+}
+.searchListInput {
+margin-top: 10px;
+margin-bottom: 15px;
+margin-right: 5px;
+}
+.searchListDiv {
+display: flex;
+justify-content: center;
+flex-direction: row;
+background-color: white;
+}
