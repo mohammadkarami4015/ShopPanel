@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+    @extends('layouts.admin')
 
 @section('title')
 
@@ -11,7 +11,7 @@
 @section('content')
     <div id="app" class="container">
         <div class="row">
-            <div class="col-md-11 col-md-offset-0">
+            <div class="col-md-8 col-md-offset-2">
 
                 <div class="" role="document" id="printPage">
                     <div class="modal-content">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-md-11 col-md-offset-1">
+                                <div class="col-md-10 col-md-offset-1" >
                                     <div class="panel panel-default">
                                         <div style="font-size: 20px" class="panel-heading"> محصولات سفارشی</div>
 
@@ -54,61 +54,22 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
                                     </div>
 
                                     <div class="panel panel-default">
                                         <div style="font-size: 20px" class="panel-heading"> مشخصات کاربری</div>
-
-                                        <table class="table table-responsive">
-                                            <thead>
-                                            <tr>
-                                                <th>نام کاربری</th>
-                                                <th>ایمیل</th>
-                                                <th> شماره تماس</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            <tr>
-                                                <td>{{$order->user->name}}</td>
-                                                <td>{{$order->user->eamil}}</td>
-                                                <td>{{$order->user->phone_number}}</td>
-
-                                            </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div style="font-size: 25px" class="panel-heading"> مشخصات سفارش</div>
-                                        <table class="table table-responsive">
-                                            <thead>
-                                            <tr>
-                                                <th> قیمت کل </th>
-                                                <th> هزینه ارسال</th>
-                                                <th> مجموع پرداختی</th>
-                                                <th> وضعیت</th>
-                                                <th> زمان ارسال</th>
-                                                <th> تاریخ ارسال</th>
-                                                <th> فاکتور ارسال شود</th>
-                                                <th> آدرس</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>{{$order->total_price}}</td>
-                                                <td>{{$order->send_price}}</td>
-                                                <td>{{$order->payed_price}}</td>
-                                                <td>{{orderStatus($order->order_status)}}</td>
-                                                <td>{{$order->send_time}}</td>
-                                                <td>{{$order->send_data}}</td>
-                                                <td> {{$order->facture_falg == true ? 'بله' : 'خیر'}}</td>
-                                                <td> {{$order->address}}</td>
-
-                                            </tr>
-
-                                            </tbody>
-                                        </table>
+                                        <div class="list-group">
+                                            <a class="list-group-item"> <label style="font-size: 17px" for="">نام کاربری
+                                                    : </label>{{$order->user->name}}</a>
+                                            <a class="list-group-item"> <label style="font-size: 17px" for="">ایمیل
+                                                    : </label>{{$order->user->email}}</a>
+                                            <a class="list-group-item"> <label style="font-size: 17px" for="">شماره تماس
+                                                    : </label>{{$order->user->phone_number}}</a>
+                                            <a class="list-group-item"> <label style="font-size: 17px" for="">آدرس
+                                                    : </label>{{$order->user->addresses}}</a>
+                                        </div>
 
                                         <div style="font-size: 25px" class="panel-heading"> مشخصات سفارش</div>
                                         <a class="list-group-item"><label style="font-size: 17px" for=""> توضیحات
@@ -133,12 +94,12 @@
 
                                     </div>
                                 </div>
-                            </div>
-                            <a class="btn btn-info" href="{{ route('order.edit',$order) }}">ویرایش</a>
+                                <a class="btn btn-info" href="{{ route('order.edit',$order) }}">ویرایش</a>
 
-                            <a style=";" href="{{ URL::previous() }}" class="btn btn-danger"
-                               type="button">بستن</a>
-                            <a onclick="printPage()" class="btn btn-danger print">print</a>
+                                <a style=";" href="{{ URL::previous() }}" class="btn btn-danger"
+                                   type="button">بستن</a>
+                                <a onclick="printPage()"  class="btn btn-danger print">print</a>
+                            </div>
                         </div>
                     </div>
 

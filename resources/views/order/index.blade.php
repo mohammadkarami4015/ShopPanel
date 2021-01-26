@@ -48,6 +48,9 @@
                                 <th>نام کاربری</th>
                                 <th>قیمت کل</th>
                                 <th>آدرس</th>
+                                <th>زمان ارسال</th>
+                                <th>تاریخ ارسال</th>
+                                <th>فاکتور ارسال شود</th>
                                 <th>وضعیت سفارش</th>
                             </tr>
                             </thead>
@@ -58,6 +61,9 @@
                                     <td>{{$order->user->name}}</td>
                                     <td>{{$order->total_price}}</td>
                                     <td>{{$order->address}}</td>
+                                    <td>{{$order->send_time}}</td>
+                                    <td>{{$order->send_date}}</td>
+                                    <td>{{$order->facture_falg == true ? 'بله' : 'خیر'}}</td>
                                     <td>{{orderStatus($order->order_status)}}</td>
 
                                     <td>

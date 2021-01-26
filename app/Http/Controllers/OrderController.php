@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrderUpdateRequest;
 use App\Order;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -65,9 +66,43 @@ class OrderController extends Controller
 
         $order->save();
 
+        $user = User::query()->where('id', $order->user_id)->first();
+
+        if ($user && $user->notification_token !== null) {
+            $keys_values = [
+                "title" => "الفباکالا",
+                "body" => getNotificationBody($request->get('order_status')),
+            ];
+            sendFCM('الفباکالا', $keys_values, $user->notification_token);
+        }
+
         flash('success', 'انجام شد');
 
         return back();
+    }
+
+    public function print(Order $order)
+    {
+        $productsId = [];
+        $productsCount = [];
+
+        $items = explode(";", $order->products);
+
+        foreach ($items as $item) {
+            $products = explode(",", $item);
+
+            array_push($productsId, $products[0]);
+
+            array_push($productsCount, $products[1]);
+        }
+
+        $orderProducts = Product::query()->whereIn('id', $productsId)->get();
+
+        foreach ($orderProducts as $key => $value) {
+            $value->count = $productsCount[$key];
+        }
+
+        return view('order.print', compact('order', 'orderProducts'));
     }
 
 }

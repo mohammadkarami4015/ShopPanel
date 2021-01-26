@@ -71,24 +71,6 @@ function getCourseType($str)
     }
 }
 
-function getTestType($str)
-{
-
-    switch ($str) {
-        case "1":
-            return "دو گزینه ای";
-        case "2":
-            return "چهار گزینه ای (دو انتخابی)";
-        case "3":
-            return "پنج گزینه ای";
-        case "4":
-            return "هشت نمره ای";
-        case "5":
-            return "چهار گزینه ای";
-        default:
-            return "نامعلوم";
-    }
-}
 
 function makePhotoTypeFile(UploadedFile $file, $type)
 {
@@ -298,4 +280,68 @@ function sendSms($phone_number, $Code)
     } catch (Exception $e) {
         echo 'Error VerificationCode : ' . $e->getMessage();
     }
+}
+
+function sendFCM($title,$keys_values = array(),$tokens = array()) {
+
+
+    //var_dump($description);
+//        print_r($keys_values);
+//        print_r($tokens);
+    //return;
+
+    $url = 'https://fcm.googleapis.com/fcm/send';
+
+
+    $fields = array (
+        'priority' => 'high',
+        'registration_ids' => $tokens,
+        'data' =>$keys_values,
+        'notification' =>$keys_values
+    );
+    $fields = json_encode ( $fields );
+
+    $headers = array (
+        'Authorization: key=' . "AAAAfHWJ6P0:APA91bEAMCYVHeqI499YSXP5_7P9lddpQUfGW4u4BwDVIBdELTgMn4WTqfXHCQ6iKSCyFG9E9tnfK7BsywNOrdOB6Lzgyq3IPtMqgvmW4LaCEm9VoNpfBvVSLC0DmLq-neS5O0xVOdH1",
+        'Content-Type: application/json'
+    );
+
+    $ch = curl_init ();
+    curl_setopt ( $ch, CURLOPT_URL, $url );
+    curl_setopt ( $ch, CURLOPT_POST, true );
+    curl_setopt ( $ch, CURLOPT_HTTPHEADER, $headers );
+    curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
+    curl_setopt ( $ch, CURLOPT_POSTFIELDS, $fields );
+
+    $result = curl_exec ( $ch );
+
+//        echo $result;
+    //$this->db->where('id',$id)
+    // ->update('notifications',array('response_msg'=>$result));
+
+    curl_close ( $ch );
+
+}
+
+function getNotificationBody($order_status){
+
+    switch ($order_status) {
+        case "1":
+            return " سفارش شما با موفقیت ثبت شد.";
+        case "2":
+            return "سفارش شما با موفقیت تایید شد.";
+        case "3":
+            return "سفارش شما با موفقیت ارسال شد.";
+        case "4":
+            return "سفارش شما با موفقیت تحویل داده شد.";
+        case "5":
+            return "سفارش شما لغو شد.";
+        case "6":
+            return "سفارش شما ارجاع داده شد.";
+        case "7":
+            return "سفارش توسط کاربر لغو شد.";
+        default:
+            return "سفارش شما با موفقیت ثبت شد.";
+    }
+
 }
