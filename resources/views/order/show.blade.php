@@ -121,10 +121,12 @@
                     </div>
 
                 </div>
-                <a class="btn btn-info" href="{{ route('order.edit',$order) }}">ویرایش</a>
+               <div style="margin: 10px">
+                   <a class="btn btn-info" href="{{ route('order.edit',$order) }}">ویرایش</a>
 
-                <a style=";" href="{{ URL::previous() }}" class="btn btn-danger"
-                   type="button">بستن</a>
+                   <a style=";" href="{{ URL::previous() }}" class="btn btn-danger"
+                      type="button">بستن</a>
+               </div>
             </div>
         </div>
     </div>
