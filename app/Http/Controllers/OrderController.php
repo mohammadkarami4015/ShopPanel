@@ -80,29 +80,4 @@ class OrderController extends Controller
 
         return back();
     }
-
-    public function print(Order $order)
-    {
-        $productsId = [];
-        $productsCount = [];
-
-        $items = explode(";", $order->products);
-
-        foreach ($items as $item) {
-            $products = explode(",", $item);
-
-            array_push($productsId, $products[0]);
-
-            array_push($productsCount, $products[1]);
-        }
-
-        $orderProducts = Product::query()->whereIn('id', $productsId)->get();
-
-        foreach ($orderProducts as $key => $value) {
-            $value->count = $productsCount[$key];
-        }
-
-        return view('order.print', compact('order', 'orderProducts'));
-    }
-
 }

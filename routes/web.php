@@ -129,7 +129,6 @@ Route::middleware('auth:web')->group(function () {
         Route::get('/', [OrderController::class, 'index'])->name('order.index');
         Route::get('/show/{order}', [OrderController::class, 'show'])->name('order.show');
         Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
-        Route::get('/print/{order}', [OrderController::class, 'print'])->name('order.print');
         Route::patch('/{order}', [OrderController::class, 'update'])->name('order.update');
     });
 
