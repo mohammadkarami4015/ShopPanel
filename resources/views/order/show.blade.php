@@ -13,12 +13,13 @@
         <div class="row">
             <div class="col-md-11 col-md-offset-0">
 
-                <div class="" role="document" id="printPage">
+                <div class="" role="document" >
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <a style="float: left;margin: 5px" onclick="printPage()" class="btn btn-default">print</a>
+                        <div class="modal-header" >
                             <h5 class="modal-title" id="exampleModalCenterTitle"> جزئیات سفارش شماره {{$order->id}}</h5>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" id="printPage">
                             <div class="row">
                                 <div class="col-md-11 col-md-offset-1">
                                     <div class="panel panel-default">
@@ -84,7 +85,7 @@
                                         <table class="table table-responsive">
                                             <thead>
                                             <tr>
-                                                <th> قیمت کل </th>
+                                                <th> قیمت کل</th>
                                                 <th> هزینه ارسال</th>
                                                 <th> مجموع پرداختی</th>
                                                 <th> وضعیت</th>
@@ -110,39 +111,20 @@
                                             </tbody>
                                         </table>
 
-                                        <div style="font-size: 25px" class="panel-heading"> مشخصات سفارش</div>
-                                        <a class="list-group-item"><label style="font-size: 17px" for=""> توضیحات
-                                                : </label> {{$order->desc}}</a>
-                                        <a class="list-group-item"><label style="font-size: 17px" for=""> قیمت کل
-                                                : </label> {{$order->total_price}}  </a>
-                                        <a class="list-group-item"><label style="font-size: 17px" for=""> هزینه ارسال
-                                                : </label> {{$order->send_price}}  </a>
-                                        <a class="list-group-item"><label style="font-size: 17px" for="">مجموع پرداختی
-                                                : </label> {{$order->payed_price}}</a>
-                                        <a class="list-group-item"><label style="font-size: 17px" for="">وضعیت
-                                                سفارش: </label> {{orderStatus($order->order_status)}}</a>
-                                        <a class="list-group-item"><label style="font-size: 17px" for="">زمان ارسال
-                                                سفارش: </label> {{orderStatus($order->send_time)}}</a>
-                                        <a class="list-group-item"><label style="font-size: 17px" for="">تاریخ ارسال
-                                                سفارش: </label> {{orderStatus($order->send_data)}}</a>
-                                        <a class="list-group-item"><label style="font-size: 17px" for="">فاکنور ارسال
-                                                شود
-                                                : </label> {{$order->facture_falg == true ? 'بله' : 'خیر'}}</a>
-                                        <a class="list-group-item"><label style="font-size: 17px" for=""> آدرس
-                                                : </label> {{$order->address}}</a>
-
+                                        <div style="font-size: 15px" class="panel-heading">توضیحات</div>
+                                        <a class="list-group-item"><label style="font-size: 17px" for="">
+                                            </label> {{$order->desc}}</a>
                                     </div>
                                 </div>
                             </div>
-                            <a class="btn btn-info" href="{{ route('order.edit',$order) }}">ویرایش</a>
-
-                            <a style=";" href="{{ URL::previous() }}" class="btn btn-danger"
-                               type="button">بستن</a>
-                            <a onclick="printPage()" class="btn btn-danger print">print</a>
                         </div>
                     </div>
 
                 </div>
+                <a class="btn btn-info" href="{{ route('order.edit',$order) }}">ویرایش</a>
+
+                <a style=";" href="{{ URL::previous() }}" class="btn btn-danger"
+                   type="button">بستن</a>
             </div>
         </div>
     </div>
