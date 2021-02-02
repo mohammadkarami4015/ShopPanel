@@ -66,14 +66,16 @@ class OrderController extends Controller
 
         $order->save();
 
+        $old_order_status=$order->order_status;
+
         $user = User::query()->where('id', $order->user_id)->first();
 
-        if ($user && $user->notification_token !== null) {
+        if ($old_order_status!=$order->order_status && $user && $user->notification_token !== null) {
             $keys_values = [
                 "title" => "الفباکالا",
                 "body" => getNotificationBody($request->get('order_status')),
             ];
-            sendFCM('الفباکالا', $keys_values, $user->notification_token);
+            sendFCM('الفباکالا', $keys_values, [$user->notification_token]);
         }
 
         flash('success', 'انجام شد');
